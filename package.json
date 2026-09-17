@@ -1,0 +1,39 @@
+{
+  "name": "opensky",
+  "version": "0.0.1",
+  "description": "OpenSky: Universal Computer Use Engine & MCP Server for AI Agents",
+  "type": "module",
+  "bin": {
+    "opensky": "./dist/bin/opensky.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build:helper": "pwsh -NoProfile -ExecutionPolicy Bypass -File ./scripts/build-helper.ps1",
+    "build": "pnpm build:helper && tsup",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/bin/opensky.js",
+    "test": "tsx tests/test-engine.ts"
+  },
+  "keywords": [
+    "computer-use",
+    "mcp",
+    "windows",
+    "automation",
+    "ai-agent",
+    "ui-automation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@11.14.0",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.3",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}

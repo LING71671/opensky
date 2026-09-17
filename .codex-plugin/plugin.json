@@ -1,0 +1,15 @@
+{
+  "name": "opensky",
+  "version": "0.1.0",
+  "description": "OpenSky: Universal Computer Use Engine for Windows",
+  "author": {
+    "name": "LING71671"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "OpenSky Computer Use",
+    "shortDescription": "Native Computer Use & UI Automation for AI Agents",
+    "category": "Productivity",
+    "brandColor": "#0EA5E9"
+  }
+}

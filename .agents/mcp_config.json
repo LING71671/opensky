@@ -3,9 +3,8 @@
     "opensky": {
       "command": "node",
       "args": [
-        "B:\\computer-use\\dist\\bin\\opensky.js"
-      ],
-      "enabled": true
+        "B:/computer-use/dist/bin/opensky.js"
+      ]
     }
   }
 }

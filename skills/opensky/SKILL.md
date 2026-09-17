@@ -1,29 +1,22 @@
 ---
 name: opensky
-description: Windows desktop and application automation via UI Automation, Screenshots, and Input simulation
+description: Control Windows apps and desktop using UI Automation and Screenshots
 ---
 
-# OpenSky: Windows Computer Use Skill
+# Windows Computer Use
 
-OpenSky provides Windows desktop and application automation capabilities with visual overlay feedback.
+Use this skill to automate Windows desktop apps. It supports dual-track interaction:
+1. **Accessibility Track (UIA & Pattern)**: Call `win_get_ui_tree` to inspect elements, then `win_invoke_element(elementIndex)` for 0ms zero-cursor execution without moving the physical mouse, or `win_click(elementIndex)`.
+2. **Visual Track (Screenshots)**: Call `win_screenshot` to get real-time screen/window images, then `win_click(x, y)` or `win_drag`.
 
-## Interaction Modes
-
-### 1. UI Automation (Recommended)
-- Call `win_get_ui_tree` to inspect interactive controls and their numeric indices (e.g. `[12] Button "Save"`).
-- Call `win_click(elementIndex: 12)` to click directly on the element.
-- Call `win_set_value(elementIndex: 12, value: "Text")` to edit fields directly via ValuePattern.
-- Independent of display resolution and DPI scaling, without requiring coordinate calculation.
-
-### 2. Screenshot & Coordinates
-- Call `win_screenshot` to capture the desktop or a specific window (`hwnd`).
-- Call `win_click(x: ..., y: ...)`, `win_drag`, or `win_scroll` using pixel coordinates.
-- Suitable for custom canvas controls, game interfaces, or webviews.
-
-## Window Management
-- Call `win_list_windows` to list application windows.
-- Call `win_activate_window(hwnd: ...)` to bring a window to the foreground.
-
-## Visual Feedback
-- Clicks trigger a ripple ring animation on the screen.
-- Target windows display an outline highlight when activated.
+## Available Tools:
+- `win_list_windows`: Find open application windows.
+- `win_activate_window`: Bring a window to the foreground.
+- `win_screenshot`: Capture high-resolution screenshot (fullscreen or window-specific).
+- `win_get_ui_tree`: Inspect UI elements with indexes and supported pattern actions.
+- `win_invoke_element`: Zero-cursor in-memory pattern execution (Invoke, Toggle, Select, Value).
+- `win_click`: Click by index or coordinate with spring-damped tactile feedback.
+- `win_type_text`: Type Unicode text.
+- `win_press_key`: Keyboard shortcuts (e.g. "Ctrl+S", "Enter").
+- `win_scroll`: Mouse wheel scroll.
+- `win_set_value`: Directly set text value of input fields.

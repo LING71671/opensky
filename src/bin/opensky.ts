@@ -65,7 +65,7 @@ Usage:
     process.exit(0);
   });
 
-  const { startStdio } = createMcpServer({ engine, name: "opensky", version: "0.0.1" });
+  const { startStdio } = createMcpServer({ engine, name: "opensky", version: "0.1.0" });
   await startStdio();
 }
 

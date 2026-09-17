@@ -51,6 +51,8 @@ namespace WinComputerUse.Native
 
                 Cursor.Position = new Point(targetX, targetY);
                 OverlayService.ShowClick(targetX, targetY, button);
+                string actionLabel = (clickCount > 1 ? "Double Click" : (button == "right" ? "Right Click" : "Click"));
+                OverlayService.ShowCursorHalo(targetX, targetY, actionLabel);
                 Thread.Sleep(30);
 
                 uint downFlag = Win32Constants.MOUSEEVENTF_LEFTDOWN;

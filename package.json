@@ -1,6 +1,6 @@
 {
   "name": "opensky",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "OpenSky: Universal Computer Use Engine & MCP Server for AI Agents",
   "type": "module",
   "bin": {
@@ -12,8 +12,9 @@
     "build:helper": "pwsh -NoProfile -ExecutionPolicy Bypass -File ./scripts/build-helper.ps1",
     "build": "pnpm build:helper && tsup",
     "dev": "tsx watch src/index.ts",
-    "start": "node dist/bin/opensky.js",
-    "test": "tsx tests/test-engine.ts"
+    "test:engine": "tsx tests/test-engine.ts",
+    "test:decoupled": "tsx tests/test-decoupled-architecture.ts",
+    "test": "tsx tests/test-engine.ts && tsx tests/test-decoupled-architecture.ts"
   },
   "keywords": [
     "computer-use",

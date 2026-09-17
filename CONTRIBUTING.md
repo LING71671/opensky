@@ -31,21 +31,32 @@ pnpm test
 
 ```
 src/
-├── adapters/       # MCP server, Anthropic bridge, Codex exporter
-├── bin/            # CLI entry point
-├── core/           # Platform-agnostic interfaces and models
-├── driver/         # Transport layer and driver implementations
-│   └── transport/  # IPC abstractions (stdio, named pipe)
-└── native/         # C# source for Windows native helper
-    ├── AccessibilityService.cs
-    ├── CaptureService.cs
-    ├── InputService.cs
-    ├── OverlayModels.cs
-    ├── OverlayRenderer.cs
-    ├── OverlayService.cs
-    ├── NativeTypes.cs
-    └── WindowService.cs
+├── core/               # Platform-agnostic domain contracts and models
+│   ├── contracts/      # Segregated interfaces (IMouseDriver, ISemanticDriver, etc.)
+│   └── models/         # Segregated data models (geometry, semantic, vision, input)
+├── driver/             # Driver implementations
+│   ├── transport/      # IPC abstractions (stdio, named pipe)
+│   └── windows/        # Windows sub-drivers (mouse, keyboard, semantic, vision)
+├── native/             # C# micro-services organized into functional subdirectories
+│   ├── Common/         # Win32 structures and constants
+│   ├── Input/          # Physical hardware input simulation
+│   ├── Semantic/       # UIA traversal and in-memory pattern invocation
+│   ├── Vision/         # Screen capture
+│   ├── Window/         # Window management and isolation
+│   ├── Overlay/        # Layered hardware composition & Spring physics
+│   └── Host/           # Daemon entry point
+├── adapters/           # MCP server, Anthropic bridge, Codex exporter
+└── bin/                # CLI entry point
 ```
+
+## Development Guidelines
+
+Please strictly follow our **[Development & Architecture Guidelines](./docs/DEVELOPMENT.md)** before submitting code:
+- **Hierarchical Over Flat**: Never dump files into a single flat directory. Use meaningful subdirectories.
+- **Single Responsibility (SRP)**: Each file must do one thing (recommended 50-200 lines). Each function must do one thing (recommended 10-40 lines).
+- **Zero-Cursor Priority**: Standard controls must use `invoke_element` (in-memory patterns) to avoid stealing user mouse focus.
+- **Blind Actions**: Mouse gestures (scroll, drag) must run independently without screenshot overhead.
+- **Apple Frosted Monochrome & Spring Physics**: All animations must use 2nd-order harmonic spring damping (`SpringPhysics.Evaluate`).
 
 ## How to Contribute
 
@@ -60,7 +71,7 @@ src/
 ### Pull Requests
 1. Fork the repository.
 2. Create a feature branch: `git checkout -b feat/your-feature`.
-3. Follow the existing code style and architecture patterns.
+3. Follow the rules in [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md).
 4. Ensure all tests pass: `pnpm test`.
 5. Commit using [Conventional Commits](https://www.conventionalcommits.org/):
    - `feat:` for new features

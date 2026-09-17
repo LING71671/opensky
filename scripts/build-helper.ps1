@@ -24,8 +24,8 @@ if (-not (Test-Path $wpfLib)) {
     $wpfLib = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\WPF"
 }
 
-$sourceFiles = (Get-ChildItem -Path $nativeDir -Filter "*.cs").FullName
-Write-Host "Compiling $($sourceFiles.Count) C# files -> $outputExe"
+$sourceFiles = (Get-ChildItem -Path $nativeDir -Filter "*.cs" -Recurse).FullName
+Write-Host "Compiling $($sourceFiles.Count) C# files (recursively) -> $outputExe"
 
 $compilerArgs = @(
     "/nologo",

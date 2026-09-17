@@ -153,14 +153,15 @@ This generates `.codex-plugin/plugin.json`, `.mcp.json`, and `skills/opensky/SKI
 | `win_list_windows` | None | Lists visible application windows with HWND, title, process name, and rectangle. |
 | `win_activate_window` | `hwnd: number` | Brings target window to foreground and outlines it. |
 | `win_screenshot` | `hwnd?: number` | Captures full desktop or target window, returning Base64 JPEG. |
-| `win_get_ui_tree` | `hwnd?: number`, `maxDepth?: number` | Dumps accessibility tree with sequential element indices. |
+| `win_get_ui_tree` | `hwnd?: number`, `maxDepth?: number` | Dumps accessibility tree with sequential element indices and discovered supported patterns. |
+| `win_invoke_element` | `elementIndex: number`, `action?: string`, `value?: string` | **Zero-Cursor**: Directly triggers UI Automation Pattern (Invoke, Toggle, Select, SetValue) in memory without moving physical mouse or stealing focus. |
 | `win_click` | `elementIndex?: number`, `x?: number`, `y?: number` | Clicks an indexed element or screen coordinate, triggering a visual ripple. |
 | `win_double_click` | `elementIndex?: number`, `x?: number`, `y?: number` | Performs a double click. |
 | `win_right_click` | `elementIndex?: number`, `x?: number`, `y?: number` | Performs a right click. |
-| `win_drag` | `startX, startY, endX, endY, durationMs?` | Performs a mouse drag from start to end coordinates. |
+| `win_drag` | `startX, startY, endX, endY, durationMs?` | Performs smooth mouse drag from start to end coordinates without screenshots. |
 | `win_type_text` | `text: string` | Types Unicode text into the currently focused control. |
 | `win_press_key` | `key: string` | Sends key or hotkey combination (e.g. `Ctrl+S`, `Enter`, `Alt+F4`, `Win+R`). |
-| `win_scroll` | `deltaY: number`, `x?: number`, `y?: number` | Scrolls the mouse wheel at the specified position. |
+| `win_scroll` | `deltaY: number`, `x?: number`, `y?: number` | Scrolls the mouse wheel at the specified position without screenshot overhead. |
 | `win_set_value` | `elementIndex: number`, `value: string` | Sets control text directly using UI Automation ValuePattern. |
 
 ---

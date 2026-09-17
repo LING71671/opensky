@@ -90,6 +90,19 @@ namespace WinComputerUse.Native
         public const ushort VK_LWIN = 0x5B;
         public const ushort VK_RWIN = 0x5C;
 
+        public const uint WM_SETTEXT = 0x000C;
+        public const uint WM_KEYDOWN = 0x0100;
+        public const uint WM_KEYUP = 0x0101;
+        public const uint WM_CHAR = 0x0102;
+        public const uint WM_MOUSEMOVE = 0x0200;
+        public const uint WM_LBUTTONDOWN = 0x0201;
+        public const uint WM_LBUTTONUP = 0x0202;
+        public const uint WM_RBUTTONDOWN = 0x0204;
+        public const uint WM_RBUTTONUP = 0x0205;
+        public const uint WM_MBUTTONDOWN = 0x0207;
+        public const uint WM_MBUTTONUP = 0x0208;
+        public const uint WM_MOUSEWHEEL = 0x020A;
+
         public const byte AC_SRC_OVER = 0x00;
         public const byte AC_SRC_ALPHA = 0x01;
         public const uint ULW_ALPHA = 0x02;
@@ -99,6 +112,10 @@ namespace WinComputerUse.Native
         public const int WS_EX_TOOLWINDOW = 0x00000080;
         public const int WS_EX_TOPMOST = 0x00000008;
         public const int WS_EX_NOACTIVATE = 0x08000000;
+
+        // Spring Physics constants (Apple/modern UI damping)
+        public const double SPRING_ZETA = 0.76;      // Damping ratio (underdamped with gentle organic rebound)
+        public const double SPRING_OMEGA = 12.5;     // Natural angular frequency
     }
 
     [StructLayout(LayoutKind.Sequential)]

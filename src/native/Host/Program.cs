@@ -150,6 +150,37 @@ namespace WinComputerUse.Native
                 case "type_text": return InputService.TypeText(GetString(p, "text", ""));
                 case "press_key": return InputService.PressKey(GetString(p, "chord", ""));
                 case "set_value": return InputService.SetValue(GetInt(p, "element_index", -1), GetString(p, "value", ""));
+                case "invoke_element":
+                    return AccessibilityService.InvokeElement(
+                        GetInt(p, "element_index", -1),
+                        GetString(p, "action", "auto"),
+                        GetString(p, "value", "")
+                    );
+                case "blind_click":
+                    return InputService.Click(
+                        0,
+                        -1,
+                        GetNullableInt(p, "x"),
+                        GetNullableInt(p, "y"),
+                        GetString(p, "mouse_button", "left"),
+                        GetInt(p, "click_count", 1)
+                    );
+                case "mouse_scroll":
+                    return InputService.Scroll(
+                        GetLong(p, "hwnd", 0),
+                        GetNullableInt(p, "x"),
+                        GetNullableInt(p, "y"),
+                        GetInt(p, "delta_x", 0),
+                        GetInt(p, "delta_y", 0)
+                    );
+                case "mouse_drag":
+                    return InputService.Drag(
+                        GetLong(p, "hwnd", 0),
+                        GetInt(p, "from_x", 0),
+                        GetInt(p, "from_y", 0),
+                        GetInt(p, "to_x", 0),
+                        GetInt(p, "to_y", 0)
+                    );
                 case "get_cursor_position":
                     Point curPos = Cursor.Position;
                     return new Dictionary<string, object>() { { "x", curPos.X }, { "y", curPos.Y } };

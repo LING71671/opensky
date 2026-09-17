@@ -153,14 +153,15 @@ node dist/bin/opensky.js --export-codex ./opensky-codex-plugin
 | `win_list_windows` | 无 | 获取当前可见的应用窗口列表（句柄、标题、所属进程、矩形坐标）。 |
 | `win_activate_window` | `hwnd: number` | 将目标窗口置于前台并展示呼吸边框反馈。 |
 | `win_screenshot` | `hwnd?: number` | 截取全屏或指定窗口图像，返回 Base64 编码的 JPEG。 |
-| `win_get_ui_tree` | `hwnd?: number`, `maxDepth?: number` | 获取无障碍控件树及每个节点的序号索引。 |
-| `win_click` | `elementIndex?: number`, `x?: number`, `y?: number` | 点击指定索引的控件或指定屏幕坐标，并触发点击波纹反馈。 |
+| `win_get_ui_tree` | `hwnd?: number`, `maxDepth?: number` | 获取无障碍控件树及每个节点的序号索引，并自动探测支持的 Pattern 操作。 |
+| `win_invoke_element` | `elementIndex: number`, `action?: string`, `value?: string` | **免光标直调**：直接在内存中触发控件的 UI Automation Pattern（如按钮 Invoke、开关 Toggle、输入框 SetValue）。物理鼠标完全不动，不抢占前台焦点。 |
+| `win_click` | `elementIndex?: number`, `x?: number`, `y?: number` | 点击指定索引的控件或指定屏幕坐标，并在光标周围渲染极简白光呼吸环与 Action 胶囊。 |
 | `win_double_click` | `elementIndex?: number`, `x?: number`, `y?: number` | 双击指定控件或屏幕坐标。 |
 | `win_right_click` | `elementIndex?: number`, `x?: number`, `y?: number` | 右键点击指定控件或屏幕坐标。 |
-| `win_drag` | `startX, startY, endX, endY, durationMs?` | 鼠标平滑拖拽。 |
+| `win_drag` | `startX, startY, endX, endY, durationMs?` | 平滑拖拽，执行纯物理手势，无需截图开销。 |
 | `win_type_text` | `text: string` | 向当前焦点控件输入 Unicode 文本。 |
 | `win_press_key` | `key: string` | 发送单个按键或组合快捷键（如 `Ctrl+S`、`Enter`、`Alt+F4`、`Win+R`）。 |
-| `win_scroll` | `deltaY: number`, `x?: number`, `y?: number` | 在指定位置滚动鼠标滚轮。 |
+| `win_scroll` | `deltaY: number`, `x?: number`, `y?: number` | 在指定位置滚动鼠标滚轮，执行纯物理手势，无需截图开销。 |
 | `win_set_value` | `elementIndex: number`, `value: string` | 通过 UI Automation ValuePattern 直接修改输入控件的文本值。 |
 
 ---

@@ -89,6 +89,24 @@ export function createMcpServer(options: McpServerAdapterOptions) {
       },
     },
     {
+      name: "win_invoke_element",
+      description: "Directly trigger a UI Automation Control Pattern on an element by index (Invoke, Toggle, Select, Value, Expand/Collapse). Zero cursor movement: physical mouse pointer is NOT moved and foreground focus is preserved.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          elementIndex: { type: "number", description: "Index of UI element from win_get_ui_tree" },
+          action: {
+            type: "string",
+            enum: ["auto", "invoke", "toggle", "select", "set_value", "expand", "collapse"],
+            default: "auto",
+            description: "Action type. Defaults to auto (infers best supported pattern: Invoke -> Toggle -> Select)",
+          },
+          value: { type: "string", description: "Value to set if action is set_value or for input controls" },
+        },
+        required: ["elementIndex"],
+      },
+    },
+    {
       name: "win_click",
       description: "Click a target element by index or at specific coordinates. Supports single, double, right-click, etc.",
       inputSchema: {
@@ -258,6 +276,14 @@ export function createMcpServer(options: McpServerAdapterOptions) {
               },
             ],
           };
+        }
+        case "win_invoke_element": {
+          const res = await engine.invokePattern({
+            elementIndex: Number(args.elementIndex),
+            action: (args.action as any) || "auto",
+            value: args.value !== undefined ? String(args.value) : undefined,
+          });
+          return { content: [{ type: "text", text: JSON.stringify(res) }] };
         }
         case "win_click": {
           const ok = await engine.click({

@@ -105,7 +105,7 @@ Add OpenSky to `opencode.jsonc`:
   "mcp": {
     "opensky": {
       "type": "local",
-      "command": ["node", "b:/computer-use/dist/bin/opensky.js"]
+      "command": ["node", "/path/to/opensky/dist/bin/opensky.js"]
     }
   }
 }
@@ -118,7 +118,7 @@ The repository includes a `.mcp.json` file in the root directory, which is autom
   "mcpServers": {
     "opensky": {
       "command": "node",
-      "args": ["b:/computer-use/dist/bin/opensky.js"]
+      "args": ["./dist/bin/opensky.js"]
     }
   }
 }
@@ -131,7 +131,7 @@ Add to `%APPDATA%\Claude\claude_desktop_config.json`:
   "mcpServers": {
     "opensky": {
       "command": "node",
-      "args": ["b:/computer-use/dist/bin/opensky.js"]
+      "args": ["/path/to/opensky/dist/bin/opensky.js"]
     }
   }
 }

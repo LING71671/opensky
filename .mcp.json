@@ -3,7 +3,7 @@
     "opensky": {
       "command": "node",
       "args": [
-        "b:/computer-use/dist/bin/opensky.js"
+        "./dist/bin/opensky.js"
       ]
     }
   }

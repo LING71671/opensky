@@ -105,7 +105,7 @@ pnpm test
   "mcp": {
     "opensky": {
       "type": "local",
-      "command": ["node", "b:/computer-use/dist/bin/opensky.js"]
+      "command": ["node", "/path/to/opensky/dist/bin/opensky.js"]
     }
   }
 }
@@ -118,7 +118,7 @@ pnpm test
   "mcpServers": {
     "opensky": {
       "command": "node",
-      "args": ["b:/computer-use/dist/bin/opensky.js"]
+      "args": ["./dist/bin/opensky.js"]
     }
   }
 }
@@ -131,7 +131,7 @@ pnpm test
   "mcpServers": {
     "opensky": {
       "command": "node",
-      "args": ["b:/computer-use/dist/bin/opensky.js"]
+      "args": ["/path/to/opensky/dist/bin/opensky.js"]
     }
   }
 }

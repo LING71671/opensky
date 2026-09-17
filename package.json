@@ -23,8 +23,19 @@
     "ai-agent",
     "ui-automation"
   ],
-  "author": "",
+  "author": "LING71671",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LING71671/opensky.git"
+  },
+  "homepage": "https://github.com/LING71671/opensky#readme",
+  "bugs": {
+    "url": "https://github.com/LING71671/opensky/issues"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "packageManager": "pnpm@11.14.0",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
